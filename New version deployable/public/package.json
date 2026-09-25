@@ -1,0 +1,24 @@
+{
+  "name": "noktura",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NOKTURA — nightlife social app: accounts, real-time chat and calls, feed, world map with droppable pins, tickets, wallet, marketplace and earn. Node/Express + Socket.IO + PostgreSQL (Supabase or Render Postgres).",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "migrate": "node src/migrate.js",
+    "build:frontend": "python scripts/build_frontend.py"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.1",
+    "socket.io": "^4.8.1"
+  }
+}

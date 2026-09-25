@@ -1,0 +1,29 @@
+# Render Blueprint — New → Blueprint → pick this repo.
+# The database lives in Supabase: paste its connection string into
+# DATABASE_URL when Render asks (it is marked sync:false so it's never
+# committed). See README.md.
+services:
+  - type: web
+    name: noktura
+    runtime: node
+    plan: free
+    buildCommand: npm install --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SEED_DEMO_DATA
+        value: "true"
+      - key: PAYPAL_ENV
+        value: sandbox
+      - key: PAYPAL_CLIENT_ID
+        sync: false
+      - key: PAYPAL_CLIENT_SECRET
+        sync: false
+      - key: TICKETMASTER_API_KEY
+        sync: false

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>NOKTURA — Payment</title>
+<meta name="theme-color" content="#0a0a0c">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0a0c;--fg:#eceef2;--muted:#8a8d96;--accent:#e10600}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100dvh;display:flex;align-items:center;justify-content:center;background:var(--bg);color:var(--fg);font-family:'Inter',Arial,sans-serif;padding:24px}
+  main{max-width:420px;text-align:center}
+  .mark{width:56px;height:56px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.5rem;font-weight:700}
+  h1{font-size:2rem;margin:0 0 10px;letter-spacing:.005em}
+  p{color:var(--muted);line-height:1.6;margin:0 0 22px}
+  button{background:var(--accent);color:#fff;border:0;padding:12px 22px;font:700 .8rem 'Inter',sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:6px}
+</style>
+</head>
+<body>
+<main>
+  <div class="mark" id="mark">✓</div>
+  <h1 id="title">Payment approved.</h1>
+  <p id="copy">Return to your NOKTURA tab and tap <strong>Finish</strong> to complete it. You can close this tab.</p>
+  <button onclick="window.close()">Close this tab</button>
+</main>
+<script>
+  var q = new URLSearchParams(location.search);
+  if (q.has('cancelled')) {
+    document.getElementById('mark').textContent = '×';
+    document.getElementById('title').textContent = 'Payment cancelled.';
+    document.getElementById('copy').textContent = 'No money was taken. Return to NOKTURA to try again.';
+  } else if (q.has('free')) {
+    document.getElementById('title').textContent = 'No payment needed.';
+  }
+</script>
+</body>
+</html>
