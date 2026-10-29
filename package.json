@@ -1,0 +1,27 @@
+{
+  "name": "noktura",
+  "version": "2.0.0",
+  "private": true,
+  "description": "NOKTURA — events, tickets, friends and payments for nights out, worldwide. Node/Express + Socket.IO + PostgreSQL.",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "migrate": "node src/migrate.js",
+    "check": "node --check src/*.js src/routes/*.js src/content/*.js && node --check public/js/*.js"
+  },
+  "dependencies": {
+    "@socket.io/redis-adapter": "^8.3.0",
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.1",
+    "redis": "^4.7.0",
+    "socket.io": "^4.8.1"
+  }
+}

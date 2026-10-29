@@ -1,0 +1,44 @@
+# Render Blueprint — New → Blueprint → pick this repo.
+# The database lives in Supabase (or Render Postgres): paste its connection
+# string into DATABASE_URL when Render asks. See README.md.
+services:
+  - type: web
+    name: noktura
+    runtime: node
+    plan: starter            # free sleeps after 15 min; starter stays up
+    region: frankfurt        # closest Render region to Belgrade
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_POOL_SIZE
+        value: "15"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: PUBLIC_URL
+        sync: false
+      - key: SUPPORT_EMAIL
+        value: support@noktura.app
+      - key: CONTACT_EMAIL
+        value: hello@noktura.app
+      - key: ADMIN_HANDLES
+        sync: false
+      - key: PAYPAL_ENV
+        value: sandbox
+      - key: PAYPAL_CLIENT_ID
+        sync: false
+      - key: PAYPAL_CLIENT_SECRET
+        sync: false
+      - key: TICKETMASTER_API_KEY
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: PLATFORM_FEE_PCT
+        value: "5"
